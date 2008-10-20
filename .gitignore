@@ -1,0 +1,7 @@
+*.orig
+*.rej
+dobj
+obj
+doc
+src/config.cc
+src/config.h
