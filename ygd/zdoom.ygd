@@ -333,6 +333,8 @@ thing    4 p -  16 "Player 4 start"		PLAY
 thing  888 p -  12 "Dog [MBF]"
 thing   11 p -  16 "Deathmatch start"		PLAYF1
 thing   14 p -  16 "Teleport exit"		TFOG
+thing 9044 p -  16 "Teleport exit +NOGRAVITY"	TFOG
+thing 9043 p -  16 "Teleport exit -NOGRAVITY"	TFOG
 
 thing 2005 w -  20 "Chainsaw"			CSAW
 thing 2001 w -  20 "Shotgun"			SHOT
@@ -345,3 +347,18 @@ thing 2006 w -  20 "BFG9000"			BFUG
 thing 5001 s -  20 "Point pusher [Boom]"
 thing 5002 s -  20 "Point puller [Boom]"
 
+# From editors/GZDoom.cfg in gzdoom
+thing 1409 s -  16 "Sound Sequence 9"		CEYE
+
+thing 9082 s -  16 "Silent Sector"		CEYE
+thing 9998 s -  16 "Actor enters sector"	CEYE
+thing 9989 s -  16 "Actor hits fake floor"	CEYE
+thing 9996 s -  16 "Actor hits ceiling"		CEYE
+thing 9999 s -  16 "Actor hits floor"		CEYE
+thing 9997 s -  16 "Actor leaves sector"	CEYE
+thing 9982 s -  16 "Eyes above fake ceiling"	CEYE
+thing 9992 s -  16 "Eyes above fake floor"	CEYE
+thing 9983 s -  16 "Eyes below fake ceiling"	CEYE
+thing 9993 s -  16 "Eyes below fake floor"	CEYE
+thing 9995 s -  16 "Player uses sector"		CEYE
+thing 9994 s -  16 "Player uses wall"		CEYE
