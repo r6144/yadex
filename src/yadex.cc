@@ -259,7 +259,7 @@ if (Game != NULL && strcmp (Game, "doom") == 0)
       }
    MainWad = Iwad1;
    }
-else if (Game != NULL && strcmp (Game, "doom2") == 0)
+else if (Game != NULL && (strcmp (Game, "doom2") == 0 || strcmp (Game, "zdoom") == 0))
    {
    if (Iwad2 == NULL)
       {
