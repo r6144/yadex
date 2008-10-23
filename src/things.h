@@ -38,7 +38,7 @@ int         get_thing_radius (wad_ttype_t type);
 inline int  get_max_thing_radius () { return _max_radius; }
 const char *GetAngleName (int);
 const char *GetWhenName (int);
-
+char *GetThingSpecialName(TPtr thing);
 
 /*
  *	angle_to_direction - convert angle to direction (0-7)

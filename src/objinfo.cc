@@ -105,6 +105,7 @@ void objinfo_c::draw ()
   int  ix0, iy0;		// Inner top left corner
   int  width;
   int  height;
+  char *str;
 
   // Am I already drawn ?
   if (! is_obj (obj_no) || obj_no == obj_no_disp && obj_type == obj_type_disp)
@@ -127,7 +128,7 @@ void objinfo_c::draw ()
       width  = 2 * BOX_BORDER + 3 * WIDE_HSPACING + columns * FONTW
 	     + 2 * HOLLOW_BORDER + sprite_width;
       height = 2 * BOX_BORDER + 2 * WIDE_VSPACING
-	     + y_max ((int) (6.5 * FONTH), sprite_height);
+	     + y_max ((int) (7.5 * FONTH), sprite_height);
       x0 = 0;
       y0 = out_y1 - height + 1;
       ix0 = x0 + BOX_BORDER + WIDE_HSPACING;
@@ -173,6 +174,9 @@ void objinfo_c::draw ()
 	GetAngleName (Things[obj_no].angle));
       DrawScreenText (-1, -1, "\1Flags:\2  %s",
 	GetWhenName (Things[obj_no].when));
+      str = GetThingSpecialName (&Things[obj_no]);
+      DrawScreenText (-1, -1, "\1Action:\2  %s", str);
+      g_free (str);
 
       // Show the corresponding sprite
       {

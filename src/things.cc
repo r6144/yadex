@@ -350,3 +350,8 @@ for (n = 0; n < 16; n++)
 return buf;
 
 }
+
+char *GetThingSpecialName(TPtr thing)
+{
+  return g_strdup_printf("%u (%s)", thing->special, GetLineDefTypeName (thing->special));
+}
