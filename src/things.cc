@@ -333,7 +333,7 @@ static char buf[16+3+1];
 // "N" is a Boom extension ("not in deathmatch")
 // "C" is a Boom extension ("not in cooperative")
 // "F" is an MBF extension ("friendly")
-const char *flag_chars = "????" "????" "FCNM" "D431";
+const char *flag_chars = (yg_level_format != YGLF_HEXEN) ? "????" "????" "FCNM" "D431" : "?sFi" "tDCS" "???d" "A431";
 int n;
 
 char *b = buf;
@@ -349,46 +349,4 @@ for (n = 0; n < 16; n++)
 *b = '\0';
 return buf;
 
-#if 0
-static char buf[30];
-char *ptr = buf;
-*ptr = '\0';
-if (when & 0x01)
-   {
-   strcpy (ptr, "D12");
-   ptr += 3;
-   }
-if (when & 0x02)
-   {
-   if (ptr != buf)
-      *ptr++ = ' ';
-   strcpy (ptr, "D3");
-   ptr += 2;
-   }
-if (when & 0x04)
-   {
-   if (ptr != buf)
-      *ptr++ = ' ';
-   strcpy (ptr, "D45");
-   ptr += 3;
-   }
-if (when & 0x08)
-   {
-   if (ptr != buf)
-      *ptr++ = ' ';
-   strcpy (ptr, "Deaf");
-   ptr += 4;
-   }
-if (when & 0x10)
-   {
-   if (ptr != buf)
-      *ptr++ = ' ';
-   strcpy (ptr, "Multi");
-   ptr += 5;
-   }
-return buf;
-#endif
 }
-
-
-

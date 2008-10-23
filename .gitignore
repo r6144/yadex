@@ -5,3 +5,6 @@ obj
 doc
 src/config.cc
 src/config.h
+README
+src/version.cc
+cache/srcdate
