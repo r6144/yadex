@@ -4,5 +4,6 @@
 #include "wstructs.h"
 
 bool LineTypeHasTag(wad_ldtype_t type);
+bool LineTypeHasNonvisualAction(wad_ldtype_t type);
 
 #endif

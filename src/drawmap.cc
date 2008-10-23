@@ -50,6 +50,7 @@ Place, Suite 330, Boston, MA 02111-1307, USA.
 #include "things.h"
 #include "vectext.h"
 #include "wadres.h"
+#include "zinfo.h"
 
 
 static void draw_grid (edit_t *e);
@@ -426,10 +427,12 @@ static void draw_linedefs (edit_t *e)
 	  continue;
 	if (LineDefs[n].type != 0)  /* AYM 19980207: was "> 0" */
 	{
-	  if (LineDefs[n].tag != 0)  /* AYM 19980207: was "> 0" */
-	    new_colour = LIGHTMAGENTA;
-	  else
-	    new_colour = LIGHTGREEN;
+	  if (LineTypeHasNonvisualAction(LineDefs[n].type)) {
+	    if (LineDefs[n].tag != 0)  /* AYM 19980207: was "> 0" */
+	      new_colour = LIGHTMAGENTA;
+	    else
+	      new_colour = LIGHTGREEN;
+	  } else new_colour = YELLOW; /* Purely ornamental */
 	}
 	else if (LineDefs[n].flags & 1)
 	  new_colour = WHITE;

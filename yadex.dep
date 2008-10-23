@@ -108,6 +108,8 @@ obj/0/drawmap.o: src/things.h src/pic2img.h src/s_centre.h src/sticker.h
 dobj/0/drawmap.o: src/things.h src/pic2img.h src/s_centre.h src/sticker.h
 obj/0/drawmap.o: src/vectext.h src/wadres.h src/spritdir.h src/lumpdir.h
 dobj/0/drawmap.o: src/vectext.h src/wadres.h src/spritdir.h src/lumpdir.h
+obj/0/drawmap.o: src/zinfo.h
+dobj/0/drawmap.o: src/zinfo.h
 obj/0/edisplay.o: src/yadex.h src/config.h atclib/atclib.h src/bitvec.h
 dobj/0/edisplay.o: src/yadex.h src/config.h atclib/atclib.h src/bitvec.h
 obj/0/edisplay.o: src/yerror.h src/ymemory.h src/aym.h src/windim.h
