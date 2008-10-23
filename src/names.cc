@@ -100,7 +100,7 @@ const char *GetLineDefFlagsName (int flags)
 static char buf[20];
 // "P" is a Boom extension ("pass through")
 // "T" is for Strife ("translucent")
-const char *flag_chars = "???T??PANBSLU2MI";
+const char *flag_chars = (yg_level_format != YGLF_HEXEN) ? "???T??PANBSLU2MI" : "e?MaaaRANBSLU2MI";
 int n;
 
 char *p = buf;
@@ -115,52 +115,6 @@ for (n = 0; n < 16; n++)
    }
 *p = '\0';
 return buf;
-
-#if 0
-static char temp[20];
-if (flags & 0x0100)
-   strcpy (temp, "A"); /* Already on the map (Ma) */
-else
-   strcpy (temp, "-");
-if (flags & 0x80)
-   strcat (temp, "V"); /* Invisible on the map (In) */
-else
-   strcat (temp, "-");
-if (flags & 0x40)
-   strcat (temp, "B"); /* Blocks sound (So) */
-else
-   strcat (temp, "-");
-if (flags & 0x20)
-   strcat (temp, "S"); /* Secret (normal on the map) (Se) */
-else
-   strcat (temp, "-");
-if (flags & 0x10)
-   strcat (temp, "L"); /* Lower texture offset changed (Lo) */
-else
-   strcat (temp, "-");
-if (flags & 0x08)
-   strcat (temp, "U"); /* Upper texture offset changed (Up) */
-else
-   strcat (temp, "-");
-if (flags & 0x04)
-   strcat (temp, "2"); /* Two-sided (2S) */
-else
-   strcat (temp, "-");
-if (flags & 0x02)
-   strcat (temp, "M"); /* Monsters can't cross this line (Mo) */
-else
-   strcat (temp, "-");
-if (flags & 0x01)
-   strcat (temp, "I"); /* Impassible (Im) */
-else
-   strcat (temp, "-");
-if (strlen (temp) > 13)
-{
-   temp[13] = '|';
-   temp[14] = '\0';
-}
-return temp;
-#endif
 }
 
 
