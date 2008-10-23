@@ -508,6 +508,8 @@ obj/0/objects.o: src/objid.h src/gfx.h src/l_vertices.h src/selectn.h
 dobj/0/objects.o: src/objid.h src/gfx.h src/l_vertices.h src/selectn.h
 obj/0/objects.o: src/levels.h src/things.h src/objects.h src/s_vertices.h
 dobj/0/objects.o: src/levels.h src/things.h src/objects.h src/s_vertices.h
+obj/0/objects.o: src/zinfo.h
+dobj/0/objects.o: src/zinfo.h
 obj/0/objinfo.o: src/yadex.h src/config.h atclib/atclib.h src/bitvec.h
 dobj/0/objinfo.o: src/yadex.h src/config.h atclib/atclib.h src/bitvec.h
 obj/0/objinfo.o: src/yerror.h src/ymemory.h src/aym.h src/windim.h
@@ -990,6 +992,12 @@ obj/0/ytime.o: src/yerror.h src/ymemory.h src/aym.h src/windim.h src/wstructs.h
 dobj/0/ytime.o: src/yerror.h src/ymemory.h src/aym.h src/windim.h src/wstructs.h
 obj/0/ytime.o: src/input.h src/ytime.h
 dobj/0/ytime.o: src/input.h src/ytime.h
+obj/0/zinfo.o: src/yadex.h src/config.h atclib/atclib.h src/bitvec.h
+dobj/0/zinfo.o: src/yadex.h src/config.h atclib/atclib.h src/bitvec.h
+obj/0/zinfo.o: src/yerror.h src/ymemory.h src/aym.h src/windim.h src/wstructs.h
+dobj/0/zinfo.o: src/yerror.h src/ymemory.h src/aym.h src/windim.h src/wstructs.h
+obj/0/zinfo.o: src/input.h src/zinfo.h src/game.h src/rgb.h
+dobj/0/zinfo.o: src/input.h src/zinfo.h src/game.h src/rgb.h
 obj/0/acolours.o: src/colour.h
 dobj/0/acolours.o: src/colour.h
 obj/0/bitvec.o: src/yerror.h src/ymemory.h
@@ -1060,3 +1068,5 @@ obj/0/yadex.o: src/config.h atclib/atclib.h src/bitvec.h src/yerror.h
 dobj/0/yadex.o: src/config.h atclib/atclib.h src/bitvec.h src/yerror.h
 obj/0/yadex.o: src/ymemory.h src/aym.h src/windim.h src/wstructs.h src/input.h
 dobj/0/yadex.o: src/ymemory.h src/aym.h src/windim.h src/wstructs.h src/input.h
+obj/0/zinfo.o: src/wstructs.h
+dobj/0/zinfo.o: src/wstructs.h

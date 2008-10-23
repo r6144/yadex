@@ -175,7 +175,7 @@ MODULES_YADEX =								\
 	wadres		wads		wads2		warn		\
 	windim		x_centre	x_exchng	x_hover		\
 	x_mirror	x_rotate	x11		xref		\
-	yadex		ytime
+	yadex		ytime		zinfo
 
 # All the modules of Atclib without path or extension.
 MODULES_ATCLIB =							\

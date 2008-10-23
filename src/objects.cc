@@ -38,7 +38,7 @@ Place, Suite 330, Boston, MA 02111-1307, USA.
 #include "s_vertices.h"
 #include "selectn.h"
 #include "things.h"
-
+#include "zinfo.h"
 
 /*
    highlight the selected objects
@@ -119,7 +119,7 @@ switch (objtype)
 		     Vertices[LineDefs[objnum].start].y,
 		     Vertices[LineDefs[objnum].end].x,
 		     Vertices[LineDefs[objnum].end].y);
-      if (colour != LIGHTRED && LineDefs[objnum].tag > 0)
+      if (colour != LIGHTRED && LineDefs[objnum].tag > 0 && LineTypeHasTag(LineDefs[objnum].type))
 	 {
 	 for (m = 0; m < NumSectors; m++)
 	    if (Sectors[m].tag == LineDefs[objnum].tag)
@@ -169,7 +169,7 @@ switch (objtype)
       if (colour != LIGHTRED && Sectors[objnum].tag > 0)
 	 {
 	 for (m = 0; m < NumLineDefs; m++)
-	    if (LineDefs[m].tag == Sectors[objnum].tag)
+	    if (LineDefs[m].tag == Sectors[objnum].tag && LineTypeHasTag(LineDefs[m].type))
 	       HighlightObject (OBJ_LINEDEFS, m, LIGHTRED);
 	 }
       SetLineThickness (0);
