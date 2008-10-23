@@ -336,8 +336,6 @@ thing    4 p -  16 "Player 4 start"		PLAY
 thing  888 p -  12 "Dog [MBF]"
 thing   11 p -  16 "Deathmatch start"		PLAYF1
 thing   14 p -  16 "Teleport exit"		TFOG
-thing 9044 p -  16 "Teleport exit +NOGR"	TFOG
-thing 9043 p -  16 "Teleport exit -NOGR"	TFOG
 
 thing 2005 w -  20 "Chainsaw"			CSAW
 thing 2001 w -  20 "Shotgun"			SHOT
@@ -352,8 +350,8 @@ thing 5002 s -  20 "Point puller [Boom]"
 
 # From editors/GZDoom.cfg in gzdoom
 thing 1409 s -  16 "Sound Sequence 9"		CEYE
+thing 14003 s -  16 "Ambient Sound 3"		CEYE
 
-thing 9082 s -  16 "Silent Sector"		CEYE
 thing 9998 s -  16 "Actor enters sector"	CEYE
 thing 9989 s -  16 "Actor hits fake floor"	CEYE
 thing 9996 s -  16 "Actor hits ceiling"		CEYE
@@ -365,3 +363,24 @@ thing 9983 s -  16 "Eyes below fake ceiling"	CEYE
 thing 9993 s -  16 "Eyes below fake floor"	CEYE
 thing 9995 s -  16 "Player uses sector"		CEYE
 thing 9994 s -  16 "Player uses wall"		CEYE
+
+thing 9001 s -  16 "Map spot"			CEYE
+thing 9025 s -  16 "Camera"			CEYE
+
+thing 9027 d -  16 "Fountain (Red)"		CEYE
+thing 9028 d -  16 "Fountain (Green)"		CEYE
+thing 9029 d -  16 "Fountain (Blue)"		CEYE
+thing 9030 d -  16 "Fountain (Yellow)"		CEYE
+thing 9031 d -  16 "Fountain (Purple)"		CEYE
+thing 9032 d -  16 "Fountain (Black)"		CEYE
+thing 9033 d -  16 "Fountain (White)"		CEYE
+
+thing 9043 p -  16 "Teleport exit -NOGR"	TFOG
+thing 9044 p -  16 "Teleport exit +NOGR"	TFOG
+
+thing 9082 s -  16 "Silent Sector"		CEYE
+
+thing 9300 s -  16 "Polyobj Anchor"		CEYE
+thing 9301 s -  16 "Polyobj Start"		CEYE
+thing 9302 s -  16 "Polyobj Start (C)"		CEYE
+thing 9303 s -  16 "Polyobj Spawn Hurt"		CEYE
