@@ -80,6 +80,7 @@ ldt  43 c "H Ceil crush 2"   "H  Ceiling_LowerAndCrush"
 ldt  44 c "H Stop ceilcrsh"  "H  Ceiling_CrushStop"
 ldt  45 c "H Ceil crush 3"   "H  Ceiling_CrushRaiseAndStay"
 ldt  46 f "H Stop fl crush"  "H  Floor_CrushStop"
+ldt  50 x "-- Xtra fl lit"   "-- ExtraFloor_LightOnly"
 ldt  60 l "H Raise plat"     "H  Plat_PerpetualRaise"
 ldt  61 l "H Stop plat"      "H  Plat_Stop"
 ldt  62 l "H Lower lift"     "H  Plat_DownWaitUpStay"
@@ -135,6 +136,8 @@ ldt 140 x "H Change sound"   "H  Sector_ChangeSound"
 
 ldt 181 x "-- Plane Align"   "--  Plane_Align (slope)"
 ldt 209 x "-- Xfer heights"  "--  Transfer_Heights (deepwater)"
+ldt 210 x "-- Xfer flr lit"  "--  Transfer_FloorLight"
+ldt 211 x "-- Xfer cei lit"  "--  Transfer_CeilingLight"
 ldt 226 a "H Execute ACS+"   "H  ACS_ExecuteAlways"
 
 
