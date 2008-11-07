@@ -378,6 +378,8 @@ thing 9033 d -  16 "Fountain (White)"		CEYE
 thing 9043 p -  16 "Teleport exit -NOGR"	TFOG
 thing 9044 p -  16 "Teleport exit +NOGR"	TFOG
 
+thing 9077 s -  16 "Upper Sector" 		CEYE
+thing 9078 s -  16 "Lower Sector" 		CEYE
 thing 9082 s -  16 "Silent Sector"		CEYE
 
 thing 9300 s -  16 "Polyobj Anchor"		CEYE

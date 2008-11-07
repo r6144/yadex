@@ -152,7 +152,7 @@ void objinfo_c::draw ()
 	break;
       }
       set_colour (WINTITLE);
-      DrawScreenText (ix0, iy0, "Thing #%d", obj_no);
+      DrawScreenText (ix0, iy0, "Thing #%d (TID %d)", obj_no, Things[obj_no].tid);
       const bool invalid_type = ! is_thing_type (Things[obj_no].type);
       set_colour (WINFG);
       DrawScreenText (-1, iy0 + (int) (1.5 * FONTH), 0);
