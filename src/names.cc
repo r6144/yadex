@@ -50,6 +50,7 @@ switch (objtype)
    case OBJ_REJECT:   return "reject";
    case OBJ_BLOCKMAP: return "blockmap";
    case OBJ_SCRIPT:   return "script";
+   case OBJ_POLYOBJ:  return "polyobject";
    }
 return "< Bug! >";
 }

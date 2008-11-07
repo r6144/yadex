@@ -46,7 +46,8 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 #define OBJ_REJECT	9
 #define OBJ_BLOCKMAP	10
 #define OBJ_SCRIPT      11
-#define OBJ_ANY		12
+#define OBJ_POLYOBJ     12
+#define OBJ_ANY		13
 
 // Special object numbers
 typedef i16  obj_no_t;

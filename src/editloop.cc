@@ -359,7 +359,8 @@ e.mb_menu[MBM_SEARCH] = new Menu (NULL,
    "~Prev object",       'p',   0,
    "~Jump to object...", 'j',   0,
    "~Find by type",	 'f',	0,
-   "Find ~ACS specials", YK_,   0,
+   "Find ~script",       YK_,   0,
+   "Find ~polyobject",   YK_,   0,
    NULL);
 
 e.mb_menu[MBM_MISC_L] = new Menu ("Misc. operations",
@@ -605,7 +606,7 @@ for (RedrawMap = 1; ; RedrawMap = 0)
 	 e.menubar->highlight (-1);
 	 if (menu_no == e.mb_ino[MBI_SEARCH])
 	   {
-	     if (r == 4) { // find ACS special
+	     if (r == 4) { // find script
 	       unsigned script_num = InputObjectNumber (-1, -1, OBJ_SCRIPT, 0);
 	       unsigned i;
 	       printf("Objects executing script %u:\n", script_num);
@@ -613,7 +614,21 @@ for (RedrawMap = 1; ; RedrawMap = 0)
 		 if (IsACSSpecial(Things[i].special) && Things[i].arg1 == script_num)
 		   printf("Thing #%d\n", i);
 	       for (i = 0; i < (unsigned) NumLineDefs; i++)
-		 if (IsACSSpecial(LineDefs[i].type) && LineDefs[i].tag == script_num)
+		 if (IsACSSpecial(LineDefs[i].type) && (unsigned) LineDefs[i].tag == script_num)
+		   printf("Line #%d\n", i);
+	       RedrawMap = 1;
+	     } else if (r == 5) { // find polyobject
+	       unsigned polyobj_num = InputObjectNumber (-1, -1, OBJ_POLYOBJ, 0);
+	       unsigned i;
+	       printf("Objects related to polyobject %u:\n", polyobj_num);
+	       for (i = 0; i < (unsigned) NumThings; i++) {
+		 if (IsPolyobjSpecial(Things[i].special) && Things[i].arg1 == polyobj_num)
+		   printf("Thing #%d\n", i);
+		 if (yg_level_format == YGLF_HEXEN && Things[i].type == 9301 && (unsigned) Things[i].angle == polyobj_num)
+		   printf("Thing #%d (*)\n", i);
+	       }
+	       for (i = 0; i < (unsigned) NumLineDefs; i++)
+		 if (IsPolyobjSpecial(LineDefs[i].type) && (unsigned) LineDefs[i].tag == polyobj_num)
 		   printf("Line #%d\n", i);
 	       RedrawMap = 1;
 	     }
