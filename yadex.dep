@@ -170,8 +170,8 @@ obj/0/editloop.o: src/selectn.h src/selpath.h src/spot.h src/t_flags.h
 dobj/0/editloop.o: src/selectn.h src/selpath.h src/spot.h src/t_flags.h
 obj/0/editloop.o: src/t_spin.h src/x_centre.h src/x_exchng.h src/x_hover.h
 dobj/0/editloop.o: src/t_spin.h src/x_centre.h src/x_exchng.h src/x_hover.h
-obj/0/editloop.o: src/xref.h src/r_render.h
-dobj/0/editloop.o: src/xref.h src/r_render.h
+obj/0/editloop.o: src/xref.h src/r_render.h src/zinfo.h
+dobj/0/editloop.o: src/xref.h src/r_render.h src/zinfo.h
 obj/0/editobj.o: src/yadex.h src/config.h atclib/atclib.h src/bitvec.h
 dobj/0/editobj.o: src/yadex.h src/config.h atclib/atclib.h src/bitvec.h
 obj/0/editobj.o: src/yerror.h src/ymemory.h src/aym.h src/windim.h

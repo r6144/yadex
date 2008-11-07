@@ -49,6 +49,7 @@ switch (objtype)
    case OBJ_SECTORS:  return "sector";
    case OBJ_REJECT:   return "reject";
    case OBJ_BLOCKMAP: return "blockmap";
+   case OBJ_SCRIPT:   return "script";
    }
 return "< Bug! >";
 }

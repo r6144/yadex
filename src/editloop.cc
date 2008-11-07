@@ -72,6 +72,7 @@ Place, Suite 330, Boston, MA 02111-1307, USA.
 #include "x_hover.h"
 #include "xref.h"
 #include "r_render.h"
+#include "zinfo.h"
 
 #ifdef Y_X11
 #include <X11/Xlib.h>
@@ -358,6 +359,7 @@ e.mb_menu[MBM_SEARCH] = new Menu (NULL,
    "~Prev object",       'p',   0,
    "~Jump to object...", 'j',   0,
    "~Find by type",	 'f',	0,
+   "Find ~ACS specials", YK_,   0,
    NULL);
 
 e.mb_menu[MBM_MISC_L] = new Menu ("Misc. operations",
@@ -601,7 +603,22 @@ for (RedrawMap = 1; ; RedrawMap = 0)
 	 {
 	 e.menubar->pull_down (-1);
 	 e.menubar->highlight (-1);
-	 if (menu_no == e.mb_ino[MBI_MISC])
+	 if (menu_no == e.mb_ino[MBI_SEARCH])
+	   {
+	     if (r == 4) { // find ACS special
+	       unsigned script_num = InputObjectNumber (-1, -1, OBJ_SCRIPT, 0);
+	       unsigned i;
+	       printf("Objects executing script %u:\n", script_num);
+	       for (i = 0; i < (unsigned) NumThings; i++)
+		 if (IsACSSpecial(Things[i].special) && Things[i].arg1 == script_num)
+		   printf("Thing #%d\n", i);
+	       for (i = 0; i < (unsigned) NumLineDefs; i++)
+		 if (IsACSSpecial(LineDefs[i].type) && LineDefs[i].tag == script_num)
+		   printf("Line #%d\n", i);
+	       RedrawMap = 1;
+	     }
+	   }
+	 else if (menu_no == e.mb_ino[MBI_MISC])
 	    {
 	    if (e.Selected)
 	       MiscOperations (e.obj_type, &e.Selected, r + 1);

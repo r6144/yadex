@@ -17,3 +17,9 @@ bool LineTypeHasNonvisualAction(wad_ldtype_t type)
 			      || (type >= 100 && type <= 103) /* scroll */
 			      || type == 121 /* lineid */));
 }
+
+bool IsACSSpecial(wad_ldtype_t type)
+{
+  if (yg_level_format != YGLF_HEXEN) return false;
+  return (type >= 80 && type <= 84);
+}
