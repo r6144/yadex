@@ -128,7 +128,7 @@ void objinfo_c::draw ()
       width  = 2 * BOX_BORDER + 3 * WIDE_HSPACING + columns * FONTW
 	     + 2 * HOLLOW_BORDER + sprite_width;
       height = 2 * BOX_BORDER + 2 * WIDE_VSPACING
-	     + y_max ((int) (7.5 * FONTH), sprite_height);
+	     + y_max ((int) (8.5 * FONTH), sprite_height);
       x0 = 0;
       y0 = out_y1 - height + 1;
       ix0 = x0 + BOX_BORDER + WIDE_HSPACING;
@@ -175,8 +175,10 @@ void objinfo_c::draw ()
       DrawScreenText (-1, -1, "\1Flags:\2  %s",
 	GetWhenName (Things[obj_no].when));
       str = GetThingSpecialName (&Things[obj_no]);
-      DrawScreenText (-1, -1, "\1Action:\2  %s", str);
+      DrawScreenText (-1, -1, "\1Action:\2 %s", str);
       g_free (str);
+      DrawScreenText (-1, -1, "\1Args:\2   %u %u %u %u %u",
+		      Things[obj_no].arg1, Things[obj_no].arg2, Things[obj_no].arg3, Things[obj_no].arg4, Things[obj_no].arg5);
 
       // Show the corresponding sprite
       {
@@ -241,7 +243,7 @@ void objinfo_c::draw ()
     case OBJ_LINEDEFS:
       // Linedef
       width  = 2 * BOX_BORDER + 2 * WIDE_HSPACING + 29 * FONTW;
-      height = 2 * BOX_BORDER + 2 * WIDE_VSPACING + (int) (8.5 * FONTH);
+      height = 2 * BOX_BORDER + 2 * WIDE_VSPACING + (int) (9.5 * FONTH);
       x0 = 0;
       y0 = out_y1 - height + 1;
       ix0 = x0 + BOX_BORDER + WIDE_HSPACING;
@@ -285,6 +287,8 @@ void objinfo_c::draw ()
 	  else
 	    DrawScreenText (-1, -1, "\1Tag:\2      %d (none)", tag);
 	}
+	DrawScreenText (-1, -1, "\1Args2+:\2   %u %u %u %u",
+			LineDefs[obj_no].arg2, LineDefs[obj_no].arg3, LineDefs[obj_no].arg4, LineDefs[obj_no].arg5);
 	s1 = LineDefs[obj_no].start;
 	s2 = LineDefs[obj_no].end;
 	DrawScreenText (-1, -1, "\1Vertices:\2 (#%d, #%d)", s1, s2);
