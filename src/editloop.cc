@@ -359,9 +359,10 @@ e.mb_menu[MBM_SEARCH] = new Menu (NULL,
    "~Prev object",       'p',   0,
    "~Jump to object...", 'j',   0,
    "~Find by type",	 'f',	0,
-   "Find ~script",       YK_,   0,
-   "Find ~polyobject",   YK_,   0,
-   "Find ~TID",          YK_,   0,
+   "Find t~ag...",       YK_,   0,
+   "Find ~script...",    YK_,   0,
+   "Find p~olyobject...",YK_,   0,
+   "Find ~TID...",       YK_,   0,
    NULL);
 
 e.mb_menu[MBM_MISC_L] = new Menu ("Misc. operations",
@@ -607,45 +608,59 @@ for (RedrawMap = 1; ; RedrawMap = 0)
 	 e.menubar->highlight (-1);
 	 if (menu_no == e.mb_ino[MBI_SEARCH])
 	   {
-	     if (r == 4) { // find script
+	     if (r == 4) { // find tag
+	       unsigned tag = InputObjectNumber (-1, -1, OBJ_TAG, 0);
+	       unsigned i;
+	       printf("Objects related to tag %u:\n", tag);
+	       for (i = 0; i < (unsigned) NumSectors; i++)
+		 if ((unsigned) Sectors[i].tag == tag)
+		   printf("Sector #%u\n", i);
+	       for (i = 0; i < (unsigned) NumThings; i++)
+		 if (LineTypeHasTag(Things[i].special) && Things[i].arg1 == tag)
+		   printf("Thing #%u\n", i);
+	       for (i = 0; i < (unsigned) NumLineDefs; i++)
+		 if (LineTypeHasTag(LineDefs[i].type) && (unsigned) LineDefs[i].tag == tag)
+		   printf("Line #%u\n", i);
+	       RedrawMap = 1;
+	     } else if (r == 5) { // find script
 	       unsigned script_num = InputObjectNumber (-1, -1, OBJ_SCRIPT, 0);
 	       unsigned i;
 	       printf("Objects executing script %u:\n", script_num);
 	       for (i = 0; i < (unsigned) NumThings; i++)
 		 if (IsACSSpecial(Things[i].special) && Things[i].arg1 == script_num)
-		   printf("Thing #%d\n", i);
+		   printf("Thing #%u\n", i);
 	       for (i = 0; i < (unsigned) NumLineDefs; i++)
 		 if (IsACSSpecial(LineDefs[i].type) && (unsigned) LineDefs[i].tag == script_num)
-		   printf("Line #%d\n", i);
+		   printf("Line #%u\n", i);
 	       RedrawMap = 1;
-	     } else if (r == 5) { // find polyobject
+	     } else if (r == 6) { // find polyobject
 	       unsigned polyobj_num = InputObjectNumber (-1, -1, OBJ_POLYOBJ, 0);
 	       unsigned i;
 	       printf("Objects related to polyobject %u:\n", polyobj_num);
 	       for (i = 0; i < (unsigned) NumThings; i++) {
 		 if (IsPolyobjSpecial(Things[i].special) && Things[i].arg1 == polyobj_num)
-		   printf("Thing #%d\n", i);
+		   printf("Thing #%u\n", i);
 		 if (yg_level_format == YGLF_HEXEN && Things[i].type == 9301 && (unsigned) Things[i].angle == polyobj_num)
-		   printf("Thing #%d (*)\n", i);
+		   printf("Thing #%u (*)\n", i);
 	       }
 	       for (i = 0; i < (unsigned) NumLineDefs; i++)
 		 if (IsPolyobjSpecial(LineDefs[i].type) && (unsigned) LineDefs[i].tag == polyobj_num)
-		   printf("Line #%d\n", i);
+		   printf("Line #%u\n", i);
 	       RedrawMap = 1;
-	     } else if (r == 6) { // find TID
+	     } else if (r == 7) { // find TID
 	       unsigned tid = InputObjectNumber (-1, -1, OBJ_TID, 0);
 	       unsigned i;
 	       printf("Objects related to TID %u:\n", tid);
 	       for (i = 0; i < (unsigned) NumThings; i++) {
-		 if (Things[i].tid == tid) printf("Thing #%d (*)\n", i);
+		 if ((unsigned) Things[i].tid == tid) printf("Thing #%u (*)\n", i);
 		 if (MatchSpecialArg(tid, GetSpecialTIDMask(Things[i].special),
 				     Things[i].arg1, Things[i].arg2, Things[i].arg3, Things[i].arg4, Things[i].arg5))
-		   printf("Thing #%d\n", i);
+		   printf("Thing #%u\n", i);
 	       }
 	       for (i = 0; i < (unsigned) NumLineDefs; i++)
 		 if (MatchSpecialArg(tid, GetSpecialTIDMask(LineDefs[i].type),
 				     LineDefs[i].tag, LineDefs[i].arg2, LineDefs[i].arg3, LineDefs[i].arg4, LineDefs[i].arg5))
-		   printf("Line #%d\n", i);
+		   printf("Line #%u\n", i);
 	       RedrawMap = 1;
 	     }
 	   }

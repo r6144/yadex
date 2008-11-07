@@ -52,6 +52,7 @@ switch (objtype)
    case OBJ_SCRIPT:   return "script";
    case OBJ_POLYOBJ:  return "polyobject";
    case OBJ_TID:      return "TID";
+   case OBJ_TAG:      return "tag";
    }
 return "< Bug! >";
 }

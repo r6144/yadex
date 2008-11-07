@@ -48,7 +48,8 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 #define OBJ_SCRIPT      11
 #define OBJ_POLYOBJ     12
 #define OBJ_TID         13
-#define OBJ_ANY		14
+#define OBJ_TAG         14
+#define OBJ_ANY		15
 
 // Special object numbers
 typedef i16  obj_no_t;
