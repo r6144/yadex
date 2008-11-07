@@ -6,7 +6,7 @@ bool LineTypeHasTag(wad_ldtype_t type)
 {
   if (yg_level_format != YGLF_HEXEN) return (type != 0);
   else return (type > 0 && ! (type == 181 /* slope */
-			      || (type >= 80 && type <= 84) /* script */
+			      || (type >= 80 && type <= 84) || type == 226 /* script */
 			      || type == 121 /* lineid */));
 }
 
@@ -21,7 +21,7 @@ bool LineTypeHasNonvisualAction(wad_ldtype_t type)
 bool IsACSSpecial(wad_ldtype_t type)
 {
   if (yg_level_format != YGLF_HEXEN) return false;
-  return (type >= 80 && type <= 84);
+  return (type >= 80 && type <= 84) || type == 226;
 }
 
 bool IsPolyobjSpecial(wad_ldtype_t type)
