@@ -67,11 +67,12 @@ void check_types ()
   assert_size (i16, 2);
   assert_size (u32, 4);
   assert_size (i32, 4);
-  assert_size (struct LineDef, 18);
-  assert_size (struct Sector,  26);
-  assert_size (struct SideDef, 30);
-  assert_size (struct Thing,   20);
-  assert_size (struct Vertex,   4);
+  // These structs should not be dumped directly into files anyway.
+  // assert_size (struct LineDef, 18);
+  // assert_size (struct Sector,  26);
+  // assert_size (struct SideDef, 30);
+  // assert_size (struct Thing,   20);
+  // assert_size (struct Vertex,   4);
   assert_wrap (u8,          255,           0);
   assert_wrap (i8,          127,        -128);
   assert_wrap (u16,       65535,           0);
