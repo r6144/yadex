@@ -386,3 +386,10 @@ thing 9300 s -  16 "Polyobj Anchor"		CEYE
 thing 9301 s -  16 "Polyobj Start"		CEYE
 thing 9302 s -  16 "Polyobj Start (C)"		CEYE
 thing 9303 s -  16 "Polyobj Spawn Hurt"		CEYE
+
+thing 9500 s -  16 "Slope floor line"           CEYE
+thing 9501 s -  16 "Slope ceiling line"         CEYE
+thing 9502 s -  16 "Slope floor tilt"           CEYE
+thing 9503 s -  16 "Slope ceiling tilt"         CEYE
+thing 9510 s -  16 "Copy floor slope"           CEYE
+thing 9511 s -  16 "Copy ceiling slope"         CEYE
