@@ -41,7 +41,7 @@ int x,y;
 u8 grey;
 
 // FIXME this is gross
-if (! strncmp (Game, "doom", 4))
+if (! strncmp (Game, "doom", 4) || ! strcmp(Game, "zdoom"))
   grey = 104;
 else if (! strcmp (Game, "heretic"))
   grey = 8;
