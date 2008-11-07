@@ -51,6 +51,7 @@ switch (objtype)
    case OBJ_BLOCKMAP: return "blockmap";
    case OBJ_SCRIPT:   return "script";
    case OBJ_POLYOBJ:  return "polyobject";
+   case OBJ_TID:      return "TID";
    }
 return "< Bug! >";
 }

@@ -74,6 +74,7 @@ switch (objtype)
       return NumSectors - 1;
    case OBJ_SCRIPT:
    case OBJ_POLYOBJ:
+   case OBJ_TID:
       return 255;
    }
 return -1;

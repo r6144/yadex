@@ -361,6 +361,7 @@ e.mb_menu[MBM_SEARCH] = new Menu (NULL,
    "~Find by type",	 'f',	0,
    "Find ~script",       YK_,   0,
    "Find ~polyobject",   YK_,   0,
+   "Find ~TID",          YK_,   0,
    NULL);
 
 e.mb_menu[MBM_MISC_L] = new Menu ("Misc. operations",
@@ -629,6 +630,21 @@ for (RedrawMap = 1; ; RedrawMap = 0)
 	       }
 	       for (i = 0; i < (unsigned) NumLineDefs; i++)
 		 if (IsPolyobjSpecial(LineDefs[i].type) && (unsigned) LineDefs[i].tag == polyobj_num)
+		   printf("Line #%d\n", i);
+	       RedrawMap = 1;
+	     } else if (r == 6) { // find TID
+	       unsigned tid = InputObjectNumber (-1, -1, OBJ_TID, 0);
+	       unsigned i;
+	       printf("Objects related to TID %u:\n", tid);
+	       for (i = 0; i < (unsigned) NumThings; i++) {
+		 if (Things[i].tid == tid) printf("Thing #%d (*)\n", i);
+		 if (MatchSpecialArg(tid, GetSpecialTIDMask(Things[i].special),
+				     Things[i].arg1, Things[i].arg2, Things[i].arg3, Things[i].arg4, Things[i].arg5))
+		   printf("Thing #%d\n", i);
+	       }
+	       for (i = 0; i < (unsigned) NumLineDefs; i++)
+		 if (MatchSpecialArg(tid, GetSpecialTIDMask(LineDefs[i].type),
+				     LineDefs[i].tag, LineDefs[i].arg2, LineDefs[i].arg3, LineDefs[i].arg4, LineDefs[i].arg5))
 		   printf("Line #%d\n", i);
 	       RedrawMap = 1;
 	     }
