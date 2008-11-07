@@ -36,6 +36,7 @@ class Menu_data
   public :
     virtual size_t nitems () const = 0;
     virtual const char *operator[] (size_t n) const = 0;
+    virtual ~Menu_data () {}
 };
 
 

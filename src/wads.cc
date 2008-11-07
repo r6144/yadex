@@ -31,6 +31,7 @@ Place, Suite 330, Boston, MA 02111-1307, USA.
 #include "yadex.h"
 #include "serialnum.h"
 #include "wads.h"
+#include <assert.h>
 
 
 MDirPtr MasterDir = NULL;		// The master directory
@@ -118,6 +119,14 @@ void file_write_i16 (FILE *fd, i16 buf)
   putc ((buf >> 8) & 0xff, fd);
 }
 
+void file_write_i16x(FILE *fd, i32 buf)
+{
+  if (buf == -1) file_write_i16 (fd, (i16) -1);
+  else {
+    assert (buf >= 0 && buf < 0xffff);
+    file_write_i16 (fd, (i16) buf);
+  }
+}
 
 /*
  *	file_write_i32 - write little-endian 32-bit signed integers to a file
@@ -234,17 +243,17 @@ int copy_bytes (FILE *dest, FILE *source, long size)
 {
   int          rc      = 0;
   void        *data    = 0;
-  const size_t chunksz = 0x4000;
+  const long chunksz = 0x4000;
 
   data = GetFarMemory (chunksz + 2);
   while (size > chunksz)
   {
-    if (fread (data, 1, chunksz, source) != chunksz)
+    if ((long) fread (data, 1, chunksz, source) != chunksz)
     {
       rc = 1;
       goto byebye;
     }
-    if (fwrite (data, 1, chunksz, dest) != chunksz)
+    if ((long) fwrite (data, 1, chunksz, dest) != chunksz)
     {
       rc = 2;
       goto byebye;

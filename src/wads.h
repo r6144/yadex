@@ -13,6 +13,8 @@ int  file_read_i32    (FILE *,  i32 *buf, long count = 1);
 long file_read_vbytes (FILE *, void *buf, long count);
 int  file_read_bytes  (FILE *, void *buf, long count);
 void file_write_i16   (FILE *,  i16 buf);
+void file_write_i16   (FILE *,  i32 buf); // not defined; declared here to catch overflows
+void file_write_i16x (FILE *fd, i32 buf);
 void file_write_i32   (FILE *,  i32 buf, long count = 1);
 void file_write_name  (FILE *, const char *name);
 void WriteBytes       (FILE *, const void *, long);

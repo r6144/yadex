@@ -331,12 +331,12 @@ if (yg_level_format != YGLF_ALPHA)
 	 for (long n = 0; n < NumLineDefs; n++)
 	    {
 	    u8 dummy[6];
-	    wf->read_i16   (&LineDefs[n].start);
-	    wf->read_i16   (&LineDefs[n].end);
+	    wf->read_i16x  (&LineDefs[n].start);
+	    wf->read_i16x  (&LineDefs[n].end);
 	    wf->read_i16   (&LineDefs[n].flags);
 	    wf->read_bytes (dummy, sizeof dummy);
-	    wf->read_i16   (&LineDefs[n].sidedef1);
-	    wf->read_i16   (&LineDefs[n].sidedef2);
+	    wf->read_i16x  (&LineDefs[n].sidedef1);
+	    wf->read_i16x  (&LineDefs[n].sidedef2);
 	    LineDefs[n].type = dummy[0];
 	    LineDefs[n].tag  = dummy[1];  // arg1 often contains a tag
 		LineDefs[n].arg2 = dummy[2];
@@ -353,13 +353,13 @@ if (yg_level_format != YGLF_ALPHA)
       else                   // Doom/Heretic/Strife mode
 	 for (long n = 0; n < NumLineDefs; n++)
 	    {
-	    wf->read_i16 (&LineDefs[n].start);
-	    wf->read_i16 (&LineDefs[n].end);
+	    wf->read_i16x(&LineDefs[n].start);
+	    wf->read_i16x(&LineDefs[n].end);
 	    wf->read_i16 (&LineDefs[n].flags);
 	    wf->read_i16 (&LineDefs[n].type);
 	    wf->read_i16 (&LineDefs[n].tag);
-	    wf->read_i16 (&LineDefs[n].sidedef1);
-	    wf->read_i16 (&LineDefs[n].sidedef2);
+	    wf->read_i16x(&LineDefs[n].sidedef1);
+	    wf->read_i16x(&LineDefs[n].sidedef2);
 	    if (wf->error ())
 	       {
 	       err ("%s: error reading linedef #%ld", lump_name, n);
@@ -403,7 +403,7 @@ if (NumSideDefs > 0)
       wf->read_bytes (&SideDefs[n].tex1, WAD_TEX_NAME);
       wf->read_bytes (&SideDefs[n].tex2, WAD_TEX_NAME);
       wf->read_bytes (&SideDefs[n].tex3, WAD_TEX_NAME);
-      wf->read_i16   (&SideDefs[n].sector);
+      wf->read_i16x  (&SideDefs[n].sector);
       if (wf->error ())
 	 {
 	 err ("%s: error reading sidedef #%ld", lump_name, n);
@@ -1163,22 +1163,22 @@ for (n = 0; n < NumLineDefs; n++)
       dummy[3] = LineDefs[n].arg3;
       dummy[4] = LineDefs[n].arg4;
       dummy[5] = LineDefs[n].arg5;
-      file_write_i16 (file, LineDefs[n].start   );
-      file_write_i16 (file, LineDefs[n].end     );
+      file_write_i16x(file, LineDefs[n].start   );
+      file_write_i16x(file, LineDefs[n].end     );
       file_write_i16 (file, LineDefs[n].flags   );
       WriteBytes     (file, dummy, 6);
-      file_write_i16 (file, LineDefs[n].sidedef1);
-      file_write_i16 (file, LineDefs[n].sidedef2);
+      file_write_i16x(file, LineDefs[n].sidedef1);
+      file_write_i16x(file, LineDefs[n].sidedef2);
 	  }
    else
       {
-      file_write_i16 (file, LineDefs[n].start   );
-      file_write_i16 (file, LineDefs[n].end     );
+      file_write_i16x(file, LineDefs[n].start   );
+      file_write_i16x(file, LineDefs[n].end     );
       file_write_i16 (file, LineDefs[n].flags   );
       file_write_i16 (file, LineDefs[n].type    );
       file_write_i16 (file, LineDefs[n].tag     );
-      file_write_i16 (file, LineDefs[n].sidedef1);
-      file_write_i16 (file, LineDefs[n].sidedef2);
+      file_write_i16x(file, LineDefs[n].sidedef1);
+      file_write_i16x(file, LineDefs[n].sidedef2);
 	  }
    }
 lump_size[l] = ftell (file) - lump_offset[l];
@@ -1196,7 +1196,7 @@ for (n = 0; n < NumSideDefs; n++)
    WriteBytes     (file, &(SideDefs[n].tex1), WAD_TEX_NAME);
    WriteBytes     (file, &(SideDefs[n].tex2), WAD_TEX_NAME);
    WriteBytes     (file, &(SideDefs[n].tex3), WAD_TEX_NAME);
-   file_write_i16 (file, SideDefs[n].sector);
+   file_write_i16x(file, SideDefs[n].sector);
    }
 lump_size[l] = ftell (file) - lump_offset[l];
 if (Level)

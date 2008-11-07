@@ -39,12 +39,12 @@ al_lcheckmagic (l);
    inserted before prev. l->curno is then inconsistant with l->current */
 if (pos->curno > l->total       /* elements were deleted */
                                 /* current was deleted */
- || pos->current != NULL && pos->current->next == AL_AINVALIDPOINTER
+    || (pos->current != NULL && pos->current->next == AL_AINVALIDPOINTER)
                                 /* prev was deleted or an element was
                                    inserted between prev and current
                                    or current was realloc'd */
- || pos->prev != NULL && pos->prev->next != NULL
-                      && pos->prev->next != pos->current)
+    || (pos->prev != NULL && pos->prev->next != NULL
+	&& pos->prev->next != pos->current))
   {
   al_aerrno = AL_AEOL;
   return AL_AEOL;

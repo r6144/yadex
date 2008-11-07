@@ -84,13 +84,13 @@ endif
 #CXX =
 
 # Options used when compiling Atclib.
-CFLAGS = -O
+CFLAGS = -g -Wall -W -Wno-unused-parameter
 
 # Options used when compiling and linking Yadex.
 # ld is invoked through the C++ compiler so
 # LDFLAGS should not contain options that mean
 # something to the C++ compiler.
-CXXFLAGS = -O
+CXXFLAGS = -g -Wall -W -Wno-unused-parameter
 #CXXFLAGS += -DWHITE_BACKGROUND
 #LDFLAGS  =
 CXXFLAGS += `pkg-config --cflags glib-2.0`

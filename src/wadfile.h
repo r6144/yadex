@@ -122,6 +122,7 @@ class Wad_file
     void        read_u8     (u8& buf) const;
     i16         read_i16    () const;
     void        read_i16    (i16 *buf) const;
+    void        read_i16x   (i32 *buf) const;
     void        read_i32    (i32 *buf, long count = 1) const;
     void        read_bytes  (void *buf, long count) const;
     long        read_vbytes (void *buf, long count) const;
@@ -280,6 +281,14 @@ inline void Wad_file::read_i16 (i16 *buf) const
   }
 }
 
+/* Reads a 16-bit signed integer that is treated as unsigned if it is not -1 */
+inline void Wad_file::read_i16x (i32 *buf) const
+{
+  i16 tmp = 0;
+  read_i16 (&tmp);
+  if (tmp == -1) *buf = tmp;
+  else *buf = (u16) tmp;
+}
 
 /*
  *	Wad_file::read_i32 - read little-endian 32-bit signed integers

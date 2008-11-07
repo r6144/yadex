@@ -77,7 +77,7 @@ void check_types ()
   assert_wrap (u16,       65535,           0);
   assert_wrap (i16,       32767,      -32768);
   assert_wrap (u32, 4294967295u,           0);
-  assert_wrap (i32,  2147483647, -2147483648);
+  assert_wrap (i32,  2147483647, (i32) -2147483648);
 }
 
 

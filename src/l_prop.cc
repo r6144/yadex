@@ -52,6 +52,7 @@ class Menu_data_ldt : public Menu_data
     Menu_data_ldt (al_llist_t *list);
     virtual size_t nitems () const;
     virtual const char *operator[] (size_t n) const;
+    virtual ~Menu_data_ldt () {}
 
   private :
     mutable char buf[100];

@@ -28,7 +28,7 @@ public:
    {
       int len;
 
-      for (len = 0; len < WAD_NAME && fname[len]; len++)
+      for (len = 0; len < (int) WAD_NAME && fname[len]; len++)
       { }
         
       return std::string(fname, len);

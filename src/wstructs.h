@@ -67,12 +67,12 @@ typedef char wad_pic_name_t[WAD_TEX_NAME];
 
 // Level objects properties
 typedef i16 wad_coord_t;		// Map (X,Y) coordinates
-typedef i16 wad_ldn_t;			// Linedef#
-typedef i16 wad_sdn_t;			// Sidedef#
-typedef i16 wad_sn_t;			// Sector#
+typedef i32 wad_ldn_t;			// Linedef#
+typedef i32 wad_sdn_t;			// Sidedef#
+typedef i32 wad_sn_t;			// Sector#
 typedef i16 wad_tag_t;			// Tag
 typedef i16 wad_tn_t;			// Thing# (theor. there might be more)
-typedef i16 wad_vn_t;			// Vertex#
+typedef i32 wad_vn_t;			// Vertex#
 typedef i16 wad_z_t;			// Map Z coordinate
 
 
