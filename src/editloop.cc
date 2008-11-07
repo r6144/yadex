@@ -616,10 +616,12 @@ for (RedrawMap = 1; ; RedrawMap = 0)
 		 if ((unsigned) Sectors[i].tag == tag)
 		   printf("Sector #%u\n", i);
 	       for (i = 0; i < (unsigned) NumThings; i++)
-		 if (LineTypeHasTag(Things[i].special) && Things[i].arg1 == tag)
+		 if (MatchSpecialArg(tag, GetSpecialTagMask(Things[i].special),
+				     Things[i].arg1, Things[i].arg2, Things[i].arg3, Things[i].arg4, Things[i].arg5))
 		   printf("Thing #%u\n", i);
 	       for (i = 0; i < (unsigned) NumLineDefs; i++)
-		 if (LineTypeHasTag(LineDefs[i].type) && (unsigned) LineDefs[i].tag == tag)
+		 if (MatchSpecialArg(tag, GetSpecialTagMask(LineDefs[i].type),
+				     LineDefs[i].tag, LineDefs[i].arg2, LineDefs[i].arg3, LineDefs[i].arg4, LineDefs[i].arg5))
 		   printf("Line #%u\n", i);
 	       RedrawMap = 1;
 	     } else if (r == 5) { // find script
