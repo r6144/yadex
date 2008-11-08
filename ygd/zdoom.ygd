@@ -139,7 +139,8 @@ ldt 209 x "-- Xfer heights"  "--  Transfer_Heights (deepwater)"
 ldt 210 x "-- Xfer flr lit"  "--  Transfer_FloorLight"
 ldt 211 x "-- Xfer cei lit"  "--  Transfer_CeilingLight"
 ldt 226 a "H Execute ACS+"   "H  ACS_ExecuteAlways"
-
+ldt 243 x "H Exit Normal"    "H  Exit_Normal"
+ldt 244 x "H Exit Secret"    "H  Exit_Secret"
 
 #
 #	Definition of sector types

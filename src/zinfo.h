@@ -5,6 +5,7 @@
 
 bool LineTypeHasTag(wad_ldtype_t type);
 bool LineTypeHasNonvisualAction(wad_ldtype_t type);
+bool IsExitSpecial(wad_ldtype_t type);
 bool IsACSSpecial(wad_ldtype_t type);
 bool IsPolyobjSpecial(wad_ldtype_t type);
 unsigned GetSpecialTIDMask(unsigned type);

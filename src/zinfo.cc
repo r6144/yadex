@@ -15,6 +15,13 @@ bool LineTypeHasNonvisualAction(wad_ldtype_t type)
 			      || type == 121 /* lineid */));
 }
 
+// Is it a level exit?
+bool IsExitSpecial(wad_ldtype_t type)
+{
+  if (yg_level_format != YGLF_HEXEN) return (type == 11 || type == 51 || type == 52 || type == 124);
+  else return (type == 243 || type == 244);
+}
+
 bool IsACSSpecial(wad_ldtype_t type)
 {
   if (yg_level_format != YGLF_HEXEN) return false;

@@ -363,6 +363,7 @@ e.mb_menu[MBM_SEARCH] = new Menu (NULL,
    "Find ~script...",    YK_,   0,
    "Find p~olyobject...",YK_,   0,
    "Find ~TID...",       YK_,   0,
+   "Find ~exit",         YK_,   0,
    NULL);
 
 e.mb_menu[MBM_MISC_L] = new Menu ("Misc. operations",
@@ -662,6 +663,16 @@ for (RedrawMap = 1; ; RedrawMap = 0)
 	       for (i = 0; i < (unsigned) NumLineDefs; i++)
 		 if (MatchSpecialArg(tid, GetSpecialTIDMask(LineDefs[i].type),
 				     LineDefs[i].tag, LineDefs[i].arg2, LineDefs[i].arg3, LineDefs[i].arg4, LineDefs[i].arg5))
+		   printf("Line #%u\n", i);
+	       RedrawMap = 1;
+	     } else if (r == 8) { // find exit
+	       unsigned i;
+	       printf("Objects triggering level exit:\n");
+	       for (i = 0; i < (unsigned) NumThings; i++)
+		 if (IsExitSpecial(Things[i].special))
+		   printf("Thing #%u\n", i);
+	       for (i = 0; i < (unsigned) NumLineDefs; i++)
+		 if (IsExitSpecial(LineDefs[i].type))
 		   printf("Line #%u\n", i);
 	       RedrawMap = 1;
 	     }
