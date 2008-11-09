@@ -80,8 +80,8 @@ endif
 # $(CC) and $(CXX) are the C and C++ compiler respectively. They're
 # normally autodetected by ./configure and passed to make through
 # obj/0/Makefile.config.
-#CC  =
-#CXX =
+CC  = /home/r6144/apps/gcc-4.3.0/bin/gcc
+CXX = /home/r6144/apps/gcc-4.3.0/bin/g++
 
 # Options used when compiling Atclib.
 CFLAGS = -g -Wall -W -Wno-unused-parameter
