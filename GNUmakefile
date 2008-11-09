@@ -90,7 +90,7 @@ CFLAGS = -g -Wall -W -Wno-unused-parameter -femit-struct-debug-baseonly
 # ld is invoked through the C++ compiler so
 # LDFLAGS should not contain options that mean
 # something to the C++ compiler.
-CXXFLAGS = $(CFLAGS)
+CXXFLAGS = $(CFLAGS) -frepo
 #CXXFLAGS += -DWHITE_BACKGROUND
 #LDFLAGS  =
 #CXXFLAGS += `pkg-config --cflags glib-2.0`
