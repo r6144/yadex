@@ -48,7 +48,6 @@ Place, Suite 330, Boston, MA 02111-1307, USA.
 /*
  *	Standard headers
  */
-#include <glib.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -83,6 +82,9 @@ Place, Suite 330, Boston, MA 02111-1307, USA.
 #include "aym.h"     /* Needs yerror.h */
 #include "windim.h"
 #include "ymemory.h"
+
+#include <string>
+using std::string;
 
 
 /*
@@ -518,7 +520,7 @@ void MouseCallBackFunction (void);
 // names.cc
 const char *GetObjectTypeName (int);
 const char *GetEditModeName (int);
-const char *GetLineDefTypeName (int);
+string GetLineDefTypeName (int);
 const char *GetLineDefTypeLongName (int);
 const char *GetLineDefFlagsName (int);
 const char *GetLineDefFlagsLongName (int);

@@ -76,7 +76,7 @@ void secret_sectors ()
 void unknown_linedef_type (SelPtr *list)
 {
   for (int n = 0; n < NumLineDefs; n++)
-    if (*GetLineDefTypeName (LineDefs[n].type) == '?')
+    if (GetLineDefTypeName (LineDefs[n].type)[0] == '?')
       SelectObject (list, n);
 }
 

@@ -84,7 +84,7 @@ return "< Bug! >";
    get a short (16 char.) description of the type of a linedef
 */
 
-const char *GetLineDefTypeName (int type)
+string GetLineDefTypeName (int type)
 {
 if (CUR_LDTDEF != NULL && CUR_LDTDEF->number == type)
   return CUR_LDTDEF->shortdesc;
@@ -186,5 +186,3 @@ static char buf[30];
 sprintf (buf, "UNKNOWN (%d)", type);
 return buf;
 }
-
-

@@ -93,8 +93,8 @@ CFLAGS = -g -Wall -W -Wno-unused-parameter
 CXXFLAGS = -g -Wall -W -Wno-unused-parameter
 #CXXFLAGS += -DWHITE_BACKGROUND
 #LDFLAGS  =
-CXXFLAGS += `pkg-config --cflags glib-2.0`
-LDFLAGS += `pkg-config --libs glib-2.0`
+#CXXFLAGS += `pkg-config --cflags glib-2.0`
+#LDFLAGS += `pkg-config --libs glib-2.0`
 
 # Options used to compile and link the debugging
 # targets. Not used by normal end-user targets.

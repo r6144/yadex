@@ -105,7 +105,6 @@ void objinfo_c::draw ()
   int  ix0, iy0;		// Inner top left corner
   int  width;
   int  height;
-  char *str;
 
   // Am I already drawn ?
   if (! is_obj (obj_no) || obj_no == obj_no_disp && obj_type == obj_type_disp)
@@ -174,9 +173,7 @@ void objinfo_c::draw ()
 	GetAngleName (Things[obj_no].angle));
       DrawScreenText (-1, -1, "\1Flags:\2  %s",
 	GetWhenName (Things[obj_no].when));
-      str = GetThingSpecialName (&Things[obj_no]);
-      DrawScreenText (-1, -1, "\1Action:\2 %s", str);
-      g_free (str);
+      DrawScreenText (-1, -1, "\1Action:\2 %u (%s)", Things[obj_no].special, GetLineDefTypeName(Things[obj_no].special).c_str());
       DrawScreenText (-1, -1, "\1Args:\2   %u %u %u %u %u",
 		      Things[obj_no].arg1, Things[obj_no].arg2, Things[obj_no].arg3, Things[obj_no].arg4, Things[obj_no].arg5);
 
@@ -260,7 +257,7 @@ void objinfo_c::draw ()
 			GetLineDefFlagsName (LineDefs[obj_no].flags));
 	DrawScreenText (-1, -1, "\1Type:\2 %3d %.19s",
 			LineDefs[obj_no].type,
-			GetLineDefTypeName (LineDefs[obj_no].type));
+			GetLineDefTypeName (LineDefs[obj_no].type).c_str());
 	ObjectsNeeded (OBJ_SIDEDEFS, OBJ_SECTORS, 0);
 	{
 	  int tag           = LineDefs[obj_no].tag;
