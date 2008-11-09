@@ -123,7 +123,7 @@ void objinfo_c::draw ()
   {
     case OBJ_THINGS:
     {
-      const int columns = 27;
+      const int columns = 35;
       width  = 2 * BOX_BORDER + 3 * WIDE_HSPACING + columns * FONTW
 	     + 2 * HOLLOW_BORDER + sprite_width;
       height = 2 * BOX_BORDER + 2 * WIDE_VSPACING
@@ -239,7 +239,7 @@ void objinfo_c::draw ()
 
     case OBJ_LINEDEFS:
       // Linedef
-      width  = 2 * BOX_BORDER + 2 * WIDE_HSPACING + 29 * FONTW;
+      width  = 2 * BOX_BORDER + 2 * WIDE_HSPACING + 37 * FONTW;
       height = 2 * BOX_BORDER + 2 * WIDE_VSPACING + (int) (9.5 * FONTH);
       x0 = 0;
       y0 = out_y1 - height + 1;
@@ -255,7 +255,7 @@ void objinfo_c::draw ()
 	DrawScreenText (-1, iy0 + (int) (1.5 * FONTH),
 			"\1Flags:\2    %.19s",
 			GetLineDefFlagsName (LineDefs[obj_no].flags));
-	DrawScreenText (-1, -1, "\1Type:\2 %3d %.19s",
+	DrawScreenText (-1, -1, "\1Type:\2 %3d %s",
 			LineDefs[obj_no].type,
 			GetLineDefTypeName (LineDefs[obj_no].type).c_str());
 	ObjectsNeeded (OBJ_SIDEDEFS, OBJ_SECTORS, 0);
