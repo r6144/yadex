@@ -84,13 +84,13 @@ CC  = /home/r6144/apps/gcc-4.3.0/bin/gcc
 CXX = /home/r6144/apps/gcc-4.3.0/bin/g++
 
 # Options used when compiling Atclib.
-CFLAGS = -g -Wall -W -Wno-unused-parameter
+CFLAGS = -g -Wall -W -Wno-unused-parameter -femit-struct-debug-baseonly
 
 # Options used when compiling and linking Yadex.
 # ld is invoked through the C++ compiler so
 # LDFLAGS should not contain options that mean
 # something to the C++ compiler.
-CXXFLAGS = -g -Wall -W -Wno-unused-parameter
+CXXFLAGS = $(CFLAGS)
 #CXXFLAGS += -DWHITE_BACKGROUND
 #LDFLAGS  =
 #CXXFLAGS += `pkg-config --cflags glib-2.0`
