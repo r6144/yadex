@@ -86,6 +86,63 @@ return "< Bug! >";
 
 string GetLineDefTypeName (int type)
 {
+  if (type >= 0x2f80 && type <= 0x7fff) { /* Generalized linedef; see boomref.txt */
+    enum gt_e { gt_floor, gt_ceil, gt_door, gt_locked_door, gt_lift, gt_stairs, gt_crusher } gtype;
+    unsigned trigger = 0, speed = 0, model = 0, monster = 0, change = 0;
+    string name;
+
+    if (type >= 0x6000) gtype = gt_floor;
+    else if (type >= 0x4000) gtype = gt_ceil;
+    else if (type >= 0x3c00) gtype = gt_door;
+    else if (type >= 0x3800) gtype = gt_locked_door;
+    else if (type >= 0x3400) gtype = gt_lift;
+    else if (type >= 0x3000) gtype = gt_stairs;
+    else gtype = gt_crusher;
+    trigger = type & 7; speed = (type >> 3) & 3;
+    if (gtype == gt_floor || gtype == gt_ceil) {
+      change = (type >> 10) & 3;
+      if (change) model = (type >> 5) & 1; else monster = (type >> 5) & 1;
+    } else if (gtype == gt_lift || gtype == gt_stairs || gtype == gt_crusher) monster = (type >> 5) & 1;
+    else if (gtype == gt_door) monster = (type >> 7) & 1;
+    
+    name += "WSGD"[trigger>>1]; name += "1R"[trigger&1]; if (monster) name += 'm';  name += ' ';
+    if (gtype == gt_floor || gtype == gt_ceil) {
+      static const char *const n_floor[] = {"F->HnF", "F->LnF", "F->NnF", "F->LnC", "F->C", "FbysT", "Fby24", "Fby32"};
+      static const char *const n_ceil[] = {"C->HnC", "C->LnC", "C->NnC", "C->HnF", "C->F", "CbysT", "Cby24", "Cby32"};
+      unsigned direction = (type >> 6) & 1, target = (type >> 7) & 7, crush = (type >> 12) & 1;
+      name += (gtype == gt_floor ? n_floor : n_ceil)[target];
+      name += (direction == 0) ? " Dn" : " Up"; name += "SNFT"[speed];
+      if (change) { name += " c"; name += " 0TS"[change]; name += "tn"[model]; }
+      if (crush) name += " Cr";
+    } else if (gtype == gt_door || gtype == gt_locked_door) {
+      static const char *const n_delay[] = {"1", "4", "9", "30"};
+      unsigned kind = (gtype == gt_door) ? ((type >> 5) & 3) : ((type >> 5) & 1);
+      unsigned delay = (gtype == gt_door) ? ((type >> 8) & 3) : 1;
+      if (kind == 1 || kind == 3) name += (kind == 1) ? "Opn" : "Cls";
+      else { name += (kind == 0) ? "OpnD" : "ClsD"; name += n_delay[delay]; name += (kind == 0) ? "Cls" : "Opn"; }
+      name += ' '; name += "SNFT"[speed];
+      if (gtype == gt_locked_door) {
+	static const char *const n_lock_ne[] = {"Any", "RC", "BC", "YC", "RS", "BS", "YS", "All6"};
+	static const char *const n_lock_e[] = {"Any", "RK", "BK", "YK", "RK", "BK", "YK", "All3"};
+	unsigned lock = (type >> 6) & 7, sk_eq_ck = (type >> 9) & 1;
+	name += ' '; name += (sk_eq_ck ? n_lock_e : n_lock_ne)[lock];
+      }
+    } else if (gtype == gt_lift) {
+      static const char *const n_lift[] = {"F->LnFD", "F->NnFD", "F->LnCD", "HnF<->LnFD"};
+      static const char *const n_delay[] = {"1", "3", "5", "10"};
+      unsigned target = (type >> 8) & 3, delay = (type >> 6) & 3;
+      name += "Lft "; name += n_lift[target]; name += n_delay[delay]; name += ' '; name += "SNFT"[speed];
+    } else if (gtype == gt_stairs) {
+      static const char *const n_step[] = {"s4", "s8", "s16", "s24"};
+      unsigned step = (type >> 6) & 3, direction = (type >> 8) & 1, igntxt = (type >> 9) & 1;
+      name += "Stair "; name += (direction == 0) ? "Dn " : "Up "; name += n_step[step]; name += ' '; name += "SNFT"[speed];
+      if (igntxt) name += " Ign";
+    } else { /* crusher */
+      unsigned silent = (type >> 6) & 1;
+      name += "Crusher "; name += "SNFT"[speed]; if (silent) name += " Silent";
+    }
+    return name;
+  }
 if (CUR_LDTDEF != NULL && CUR_LDTDEF->number == type)
   return CUR_LDTDEF->shortdesc;
 for (al_lrewind (ldtdef); ! al_leol (ldtdef); al_lstep (ldtdef))
