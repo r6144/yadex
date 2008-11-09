@@ -139,10 +139,6 @@ if (strncmp (wad->type, "PWAD", 4))
 
 /* alter the master directory */
 
-/* AYM: now, while the directory is scanned, a state variable is
-   updated. its values are :
-   0    no special state
-   1-11 reading level lumps */
 /* AYM 1998-11-15: FIXME: to be on the safe side, should consider
    FF_END to end a group of flats if the following entry is neither
    F_END nor F?_START. */
@@ -163,7 +159,7 @@ for (n = 0; n < wad->dirsize; n++)
    state_prev = state;
    replaces_prev = replaces;
    entry_type_prev = entry_type;
-   if (state == 0)
+   if (state == 0 || state == 'm')
       {
       if (! strcmp (entryname, "F_START")
        || ! strcmp (entryname, "P_START")
@@ -209,7 +205,7 @@ for (n = 0; n < wad->dirsize; n++)
 	 /* if it is a level, do the same thing for the next 10 entries too */
 	 if (levelname2levelno (entryname))
 	    {
-	    state = 11;
+	    state = 'm';
 	    entry_type = "level";
 	    // Add to list of level names
 	    {
@@ -313,9 +309,6 @@ for (n = 0; n < wad->dirsize; n++)
    mdir->wadfile = wad;
    memcpy (&(mdir->dir), &(wad->directory[n]), sizeof (struct Directory));
    mdir = mdir->next;
-
-   if (state > 0 && state <= 11)
-      state--;
    }
 verbmsg ("\n");
 master_dir_serial.bump ();
