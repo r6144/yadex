@@ -1000,6 +1000,18 @@ obj/0/zinfo.o: src/yerror.h src/ymemory.h src/aym.h src/windim.h src/wstructs.h
 dobj/0/zinfo.o: src/yerror.h src/ymemory.h src/aym.h src/windim.h src/wstructs.h
 obj/0/zinfo.o: src/input.h src/zinfo.h src/game.h src/rgb.h
 dobj/0/zinfo.o: src/input.h src/zinfo.h src/game.h src/rgb.h
+obj/0/_debug.o: src/yadex.h src/config.h atclib/atclib.h src/bitvec.h
+dobj/0/_debug.o: src/yadex.h src/config.h atclib/atclib.h src/bitvec.h
+obj/0/_debug.o: src/yerror.h src/ymemory.h src/aym.h src/windim.h
+dobj/0/_debug.o: src/yerror.h src/ymemory.h src/aym.h src/windim.h
+obj/0/_debug.o: src/wstructs.h src/input.h src/colour.h src/_edit.h src/objid.h
+dobj/0/_debug.o: src/wstructs.h src/input.h src/colour.h src/_edit.h src/objid.h
+obj/0/_debug.o: src/edwidget.h src/gamesky.h src/wadname.h src/l_super.h
+dobj/0/_debug.o: src/edwidget.h src/gamesky.h src/wadname.h src/l_super.h
+obj/0/_debug.o: src/levels.h src/things.h src/menudata.h src/modpopup.h
+dobj/0/_debug.o: src/levels.h src/things.h src/menudata.h src/modpopup.h
+obj/0/_debug.o: src/menu.h src/rgbbmp.h src/rgb.h src/spot.h src/gfx.h
+dobj/0/_debug.o: src/menu.h src/rgbbmp.h src/rgb.h src/spot.h src/gfx.h
 obj/0/acolours.o: src/colour.h
 dobj/0/acolours.o: src/colour.h
 obj/0/bitvec.o: src/yerror.h src/ymemory.h

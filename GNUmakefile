@@ -91,6 +91,8 @@ CFLAGS = -g -Wall -W -Wno-unused-parameter -femit-struct-debug-baseonly
 # LDFLAGS should not contain options that mean
 # something to the C++ compiler.
 CXXFLAGS = $(CFLAGS) -frepo
+# We include debug information that is missing from the other files, and nothing more.
+$(OBJDIR)/_debug.o: CXXFLAGS = -g -Wall -W -Wno-unused-parameter -fno-implicit-templates -fno-eliminate-unused-debug-types
 #CXXFLAGS += -DWHITE_BACKGROUND
 #LDFLAGS  =
 #CXXFLAGS += `pkg-config --cflags glib-2.0`
@@ -175,7 +177,7 @@ MODULES_YADEX =								\
 	wadres		wads		wads2		warn		\
 	windim		x_centre	x_exchng	x_hover		\
 	x_mirror	x_rotate	x11		xref		\
-	yadex		ytime		zinfo
+	yadex		ytime		zinfo		_debug
 
 # All the modules of Atclib without path or extension.
 MODULES_ATCLIB =							\

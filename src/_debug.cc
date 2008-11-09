@@ -1,0 +1,22 @@
+#include "yadex.h"
+
+// NOTE: Some duplication is inevitable here, as ideally we only want to include the debug information for types in those header files,
+// not what they include by themselves.
+#include "colour.h"
+#include "_edit.h"
+#include "edwidget.h"
+//#include "gamedef.h"
+#include "gamesky.h"
+#include "l_super.h"
+//#include "masterdir.h"
+#include "menudata.h"
+#include "modpopup.h"
+#include "objid.h"
+//#include "record.h"
+#include "rgbbmp.h"
+#include "rgb.h"
+#include "spot.h"
+#include "wadname.h"
+#include "wstructs.h"
+#include "yerror.h"
+#include "ymemory.h"
