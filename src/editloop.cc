@@ -622,7 +622,8 @@ for (RedrawMap = 1; ; RedrawMap = 0)
 		   printf("Thing #%u\n", i);
 	       for (i = 0; i < (unsigned) NumLineDefs; i++)
 		 if (MatchSpecialArg(tag, GetSpecialTagMask(LineDefs[i].type),
-				     LineDefs[i].tag, LineDefs[i].arg2, LineDefs[i].arg3, LineDefs[i].arg4, LineDefs[i].arg5))
+				     LineDefs[i].tag, LineDefs[i].arg2, LineDefs[i].arg3, LineDefs[i].arg4, LineDefs[i].arg5)
+		     || (LineDefs[i].type == 0 && (unsigned) LineDefs[i].tag == tag)) // for some teleport targets in Boom maps
 		   printf("Line #%u\n", i);
 	       RedrawMap = 1;
 	     } else if (r == 5) { // find script
