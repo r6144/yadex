@@ -112,7 +112,7 @@ return 0;
 int OpenPatchWad (const char *filename)
 {
 Wad_file * wad;
-MDirPtr mdir = 0;
+MDirPtr mdir = 0, Level = 0;
 long n;
 char entryname[WAD_NAME + 1];
 const char *entry_type = 0;
@@ -200,12 +200,31 @@ for (n = 0; n < wad->dirsize; n++)
 	 }
       else
 	 {
-	 mdir = FindMasterDir (MasterDir, entryname);
+	 // NOTE: currently only the map entries existing in the original IWAD will be correctly replaced
+	 if (state == 'm'
+	     && (!strncmp (entryname, "THINGS", WAD_NAME)
+		 || !strncmp (entryname, "LINEDEFS", WAD_NAME)
+		 || !strncmp (entryname, "SIDEDEFS", WAD_NAME)
+		 || !strncmp (entryname, "VERTEXES", WAD_NAME)
+		 || !strncmp (entryname, "SEGS", WAD_NAME)
+		 || !strncmp (entryname, "SSECTORS", WAD_NAME)
+		 || !strncmp (entryname, "NODES", WAD_NAME)
+		 || !strncmp (entryname, "SECTORS", WAD_NAME)
+		 || !strncmp (entryname, "REJECT", WAD_NAME)
+		 || !strncmp (entryname, "BLOCKMAP", WAD_NAME)
+		 || !strncmp (entryname, "BEHAVIOR", WAD_NAME)
+		 || !strncmp (entryname, "SCRIPTS", WAD_NAME)
+		 || !strncmp (entryname, "GL_", 3)))
+	   mdir = FindMasterDir (Level, entryname);
+	 else {
+	   if (state == 'm') state = 0;
+	   mdir = FindMasterDir (MasterDir, entryname);
+	 }
 	 replaces = mdir != NULL;
 	 /* if it is a level, do the same thing for the next 10 entries too */
 	 if (levelname2levelno (entryname))
 	    {
-	    state = 'm';
+	    state = 'm'; Level = NULL; // Level will be updated later
 	    entry_type = "level";
 	    // Add to list of level names
 	    {
@@ -308,6 +327,7 @@ for (n = 0; n < wad->dirsize; n++)
    /* else, simply replace it */
    mdir->wadfile = wad;
    memcpy (&(mdir->dir), &(wad->directory[n]), sizeof (struct Directory));
+   if (state == 'm' && !Level) Level = mdir;
    mdir = mdir->next;
    }
 verbmsg ("\n");

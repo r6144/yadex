@@ -304,8 +304,8 @@ if (yg_level_format != YGLF_ALPHA)
 	 {
 	 NumLineDefs = (int) (dir->dir.size / WAD_HEXEN_LINEDEF_BYTES);
 	 if ((i32) (NumLineDefs * WAD_HEXEN_LINEDEF_BYTES) != dir->dir.size)
-	    warn ("the %s lump has a weird size."
-	       " The wad might be corrupt.\n", lump_name);
+	    warn ("the %s lump has a weird size %lu."
+		  " The wad might be corrupt.\n", lump_name, (unsigned long) dir->dir.size);
 	 }
       else                   // Doom/Heretic/Strife mode
 	 {
