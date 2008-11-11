@@ -7,12 +7,15 @@ bool LineTypeHasTag(wad_ldtype_t type)
   return GetSpecialTagMask(type) & 1;
 }
 
+/* FIXME: Should exclude most non-activated action specials */
 bool LineTypeHasNonvisualAction(wad_ldtype_t type)
 {
   if (yg_level_format != YGLF_HEXEN) return (type != 0);
-  else return (type > 0 && ! (type == 181 /* slope */
-			      || (type >= 100 && type <= 103) /* scroll */
-			      || type == 121 /* lineid */));
+  else return (type > 0 && ! ((type >= 181 && type <= 189) /* slope, mirror, panning, etc. */
+			      || type == 9 || type == 160 /* horizon, 3D floor */
+			      || (type >= 100 && type <= 103) /* scrolling the current line */
+			      || (type >= 209 && type <= 214) || type == 216 || (type >= 218 && type <= 220)
+			      || type == 50 /* transfer sector parameters */));
 }
 
 // Is it a level exit?
@@ -79,6 +82,19 @@ unsigned GetSpecialTagMask(unsigned type)
     return 2;
   case 71:
     return 4;
+  default: return 0;
+  }
+  
+}
+
+unsigned GetSpecialLineIDMask(unsigned type)
+{
+  /* FIXME: Thing types 9500 and 9501 also uses a line ID, but it is only for sloping */
+  if (yg_level_format != YGLF_HEXEN) return 0;
+  switch (type) {
+  case 121: case 183: case 184: case 208: case 221: case 222: case 223: case 224:
+    return 1;
+  case 215: return 3;
   default: return 0;
   }
   

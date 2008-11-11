@@ -53,6 +53,7 @@ switch (objtype)
    case OBJ_POLYOBJ:  return "polyobject";
    case OBJ_TID:      return "TID";
    case OBJ_TAG:      return "tag";
+   case OBJ_LINE_ID:  return "line ID";
    }
 return "< Bug! >";
 }

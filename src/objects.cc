@@ -76,6 +76,7 @@ switch (objtype)
    case OBJ_POLYOBJ:
    case OBJ_TID:
    case OBJ_TAG:
+   case OBJ_LINE_ID:
       return 255;
    }
 return -1;
