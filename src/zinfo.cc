@@ -40,16 +40,22 @@ bool IsPolyobjSpecial(wad_ldtype_t type)
 /* Which of the special's arguments are Thing IDs?  Bit 0..4 of the result corresponds to arg1,...,arg5. */
 unsigned GetSpecialTIDMask(unsigned type)
 {
+  /* FIXME: Also Thing type 9081 */
   if (yg_level_format != YGLF_HEXEN) return 0;
   switch (type) {
-  case 119: case 127: case 128: case 180: case 9081:
+  case 39: case 70: case 71:
+  case 119: case 127: case 128: case 130: case 131: case 132: case 133: case 134: case 135: case 136: case 137: case 180: case 237:
     return 1;
-  case 76: case 125: case 176: case 177:
+  case 227:
+    return 2;
+  case 76: case 125: case 176: case 177: case 229:
     return 3;
   case 77:
     return 7;
   case 139: case 9072: case 9073: case 9074:
     return 8;
+  case 120:
+    return 16;
   case 78:
     return 22;
   case 175: case 178:
